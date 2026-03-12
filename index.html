@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Ventas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Control de Ventas</h1>
+            <p class="subtitle">Gestiona tus ventas de forma fácil y eficiente</p>
+        </header>
+
+        <!-- Formulario de entrada -->
+        <section class="input-section">
+            <div class="form-group">
+                <input id="articulo" type="text" placeholder="Nombre del artículo" required>
+                <input id="cantidad" type="number" placeholder="Cantidad" min="1" step="0.01" required>
+                <input id="precio" type="number" placeholder="Precio unitario" min="0" step="0.01" required>
+                <button class="btn btn-primary" onclick="window.app.agregarVenta()">➕ Agregar Venta</button>
+            </div>
+        </section>
+
+        <!-- Sección de filtros y búsqueda -->
+        <section class="filters-section">
+            <div class="filter-group">
+                <input id="busqueda" type="text" placeholder="🔍 Buscar artículo..." class="search-input">
+                
+                <div class="date-filters">
+                    <label>Desde:</label>
+                    <input id="fechaInicio" type="date" class="date-input">
+                    
+                    <label>Hasta:</label>
+                    <input id="fechaFin" type="date" class="date-input">
+                    
+                    <button class="btn btn-secondary" onclick="window.app.filtrar()">🔍 Filtrar</button>
+                    <button class="btn btn-secondary" onclick="window.app.limpiarFiltros()">✨ Limpiar Filtros</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabla de ventas -->
+        <section class="table-section">
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Total de ventas:</span>
+                    <span class="stat-value" id="totalVentas">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total general:</span>
+                    <span class="stat-value" id="totalGeneral">$0.00</span>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table id="tabla">
+                    <thead>
+                        <tr>
+                            <th onclick="window.app.ordenar('fecha')">📅 Fecha</th>
+                            <th onclick="window.app.ordenar('articulo')">📦 Artículo</th>
+                            <th onclick="window.app.ordenar('cantidad')">📊 Cantidad</th>
+                            <th onclick="window.app.ordenar('precio')">💵 Precio</th>
+                            <th onclick="window.app.ordenar('total')">💰 Total</th>
+                            <th>⚙️ Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="empty-state" id="estadoVacio" style="display: none;">
+                <p>📭 No hay ventas registradas. ¡Comienza agregando una nueva venta!</p>
+            </div>
+        </section>
+
+        <!-- Botones de acción -->
+        <section class="actions-section">
+            <button class="btn btn-success" onclick="window.app.exportarExcel()">📥 Exportar a Excel</button>
+            <button class="btn btn-danger" onclick="window.app.limpiar()">🗑️ Limpiar Todo</button>
+        </section>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/sales.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
