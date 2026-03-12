@@ -1,0 +1,23 @@
+# Node.js
+node_modules/
+
+# IDEs
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Build directories
+/dist/
+/build/
+
+# Other common files
+*.log
+*.env
+*.lock
+*.tmp
+*.bak
